@@ -1,0 +1,63 @@
+SELECT TOP (1000) [InvoiceNo]
+      ,[StockCode]
+      ,[Description]
+      ,[Quantity]
+      ,[InvoiceDate]
+      ,[UnitPrice]
+      ,[CustomerID]
+      ,[Country]
+  FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+
+  --1. Retrieve  the  details  of  invoices  where  the  unit  price  is  less  than 
+--or equal to 3.00.
+SELECT InvoiceNo, UnitPrice
+FROM [ONLINE RETAIIL].[dbo].['Online Retail Data Set (1)$']
+WHERE UnitPrice <=3.00
+
+--2. Retrieve the details of invoices where the quantity is greater than 
+--10 and the country is not 'United Kingdom.
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE Quantity>10 AND Country <> 'United Kingdom';
+
+--3. Retrieve  the  details  of  invoices  where  the  stock  code  is  either 
+--'85123A' or '85099B'.
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE stockcode =('85123A','85099B');
+
+--4. Retrieve the details of invoices where the invoice date is 
+--between '2010-12-01 00:00:00' and '2010-12-07 23:59:59'.
+
+SELECT * 
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE InvoiceDate BETWEEN'2010-12-01 00:00:00' AND '2010-12-07 23:59:59'
+--5. Retrieve  the  details  of  invoices  where  the  customer  ID  is  17850 
+--and the unit price is greater than 2.00
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE customerid='17850' Unitprice>2.00
+
+
+--1. Find all invoices from customers with IDs 17850, 12583, and 13694.
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE customerid IS ('17850', '12583', '13694');
+--2. Find  all  invoices  not  from  customers  with  IDs  17850,  12583,  and 
+--13694.
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE customerid NOT IN('17850', '12583', '13694');
+--3. Find all invoices where the CustomerID is not specified.
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE customerid IS NULL;
+--4. Find all invoices with UnitPrice between $2.00 and $3.00.
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE unitprice BETWEEN 2.00 AND 3.00;
+--5. Find all invoices where the Country is either 'United Kingdom' or 
+--'France
+SELECT *
+FROM [ONLINE RETAIIL].[dbo].[ONLINE STORE]
+WHERE COUNTRY IN ('United kingdom' OR 'France')
